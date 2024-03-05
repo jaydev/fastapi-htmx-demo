@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FastAPI + HTMX Demo</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body>
+    <h1>Item List</h1>
+    <ul id="item-list">
+        {% for item in items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <form hx-post="/add-item" hx-target="#item-list" hx-swap="beforeend" hx-include="#item-input">
+        <input type="text" id="item-input" name="item" required>
+        <button type="submit">Add Item</button>
+    </form>
+</body>
+</html>
